@@ -21,7 +21,7 @@ public class RollerAgent : Agent
     // エピソード開始時に呼ばれる
     public override void OnEpisodeBegin()
     {
-        // RollerAgentが床から落下している時
+        // RollerAgentの落下時
         if (this.transform.localPosition.y < 0)
         {
             // RollerAgentの位置と速度をリセット
@@ -32,10 +32,16 @@ public class RollerAgent : Agent
 
         // Targetの位置のリセット
         target.localPosition = new Vector3(
-            Random.value*8-4, 0.5f, Random.value*8-4);
+            Random.value * 8 - 4, 0.5f, Random.value * 8 - 4);
+
+        // 環境パラメータの設定
+        EnvironmentParameters envParams = Academy.Instance.EnvironmentParameters;
+        rBody.mass = envParams.GetWithDefault("mass", 1.0f);
+        var scale = envParams.GetWithDefault("scale", 1.0f);
+        rBody.gameObject.transform.localScale = new Vector3(scale, scale, scale);
     }
 
-    // 観察取得時に呼ばれる
+    // 状態取得時に呼ばれる
     public override void CollectObservations(VectorSensor sensor)
     {
         sensor.AddObservation(target.localPosition.x); //TargetのX座標
@@ -46,7 +52,7 @@ public class RollerAgent : Agent
         sensor.AddObservation(rBody.velocity.z); // RollerAgentのZ速度
     }
 
-    // 行動決定時に呼ばれる
+    // 行動実行時に呼ばれる
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         // RollerAgentに力を加える
@@ -55,7 +61,7 @@ public class RollerAgent : Agent
         controlSignal.z = actionBuffers.ContinuousActions[1];
         rBody.AddForce(controlSignal * 10);
 
-        // RollerAgentがTargetの位置にたどりついた時
+        // RollerAgentがTargetの位置に到着
         float distanceToTarget = Vector3.Distance(
             this.transform.localPosition, target.localPosition);
         if (distanceToTarget < 1.42f)
@@ -64,7 +70,7 @@ public class RollerAgent : Agent
             EndEpisode();
         }
 
-        // RollerAgentが床から落下した時
+        // RollerAgentが落下
         if (this.transform.localPosition.y < 0)
         {
             EndEpisode();

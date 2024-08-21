@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 23
-  productGUID: 18d814fc8329b4b4381eb08722b9d545
+  productGUID: 57df891aebe2f8d40b1f9fd0ea57dd9b
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: RollerBall
+  productName: RandomizeEx
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -135,7 +135,14 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -153,7 +160,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.DefaultCompany.RandomizeEx
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -684,10 +692,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: f04ed049-1f26-4e1b-8755-b588763dc684
+  cloudProjectId: dda97dec-ee55-4363-b186-2f1d984f5ca1
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: RollerBall 2024-08-19_13-53-13
+  projectName: RollerBall 2024-08-20_09-19-31
   organizationId: r118168
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
