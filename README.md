@@ -1,4 +1,5 @@
-# 2024年度intern学習内容
+# 2024年度クフウシヤintern学習内容
+
 ## 3月期内容
 - legged_control
 - web-rtcのお勉強

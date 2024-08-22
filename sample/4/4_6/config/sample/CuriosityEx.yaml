@@ -1,0 +1,45 @@
+behaviors:
+  CuriosityEx:
+    # トレーナー種別
+    trainer_type: ppo
+
+    # 基本
+    max_steps: 10000000
+    time_horizon: 128
+    summary_freq: 10000
+    keep_checkpoints: 5
+
+    # 学習アルゴリズム
+    hyperparameters:
+      # PPOとSAC共通
+      batch_size: 128
+      buffer_size: 2048
+      learning_rate: 0.0003
+      learning_rate_schedule: linear
+
+      # PPO用
+      beta: 0.01
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+
+    # ニューラルネットワーク
+    network_settings:
+      normalize: false
+      hidden_units: 512
+      num_layers: 2
+
+    # 報酬
+    reward_signals:
+      # 環境報酬
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+
+      # Curiosity報酬
+      curiosity:
+        gamma: 0.99
+        strength: 0.005
+        network_settings:
+          hidden_units: 64
+        learning_rate: 0.0003
